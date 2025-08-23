@@ -10,37 +10,37 @@ class CategoryModel {
 
   static List<CategoryModel> categories = [
     CategoryModel(
-      id: '',
+      id: 'general',
       name: "General",
       imageName: "assets/images/general_dark.png",
     ),
     CategoryModel(
-      id: '',
+      id: 'business',
       name: "Business",
       imageName: "assets/images/business_dark.png",
     ),
     CategoryModel(
-      id: '',
+      id: 'sports',
       name: "Sports",
       imageName: "assets/images/sport_dark.png",
     ),
     CategoryModel(
-      id: '',
+      id: 'technology',
       name: "Technology",
       imageName: "assets/images/technology_dark.png",
     ),
     CategoryModel(
-      id: '',
+      id: 'entertainment',
       name: "Entertainment",
       imageName: "assets/images/entertainment_dark.png",
     ),
     CategoryModel(
-      id: '',
+      id: 'health',
       name: "Health",
       imageName: "assets/images/health_dark.png",
     ),
     CategoryModel(
-      id: '',
+      id: 'science',
       name: "Science",
       imageName: "assets/images/science_dark.png",
     ),

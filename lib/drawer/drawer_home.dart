@@ -4,8 +4,9 @@ import 'package:news_application/apptheme.dart';
 import 'package:news_application/drawer/title_item.dart';
 
 class DrawerHome extends StatefulWidget {
-  final void Function() resetSelected;
-  const DrawerHome({super.key, required this.resetSelected});
+  final void Function()? onTap;
+  final void Function()? resetSelected;
+  const DrawerHome({super.key, this.resetSelected, this.onTap});
 
   @override
   State<DrawerHome> createState() => _DrawerHomeState();
@@ -45,10 +46,12 @@ class _DrawerHomeState extends State<DrawerHome> {
             child: Column(
               children: [
                 InkWell(
-                  onTap: () {
-                    widget.resetSelected();
-                    Navigator.of(context).pop();
-                  },
+                  onTap:
+                      widget.onTap ??
+                      () {
+                        widget.resetSelected!();
+                        Navigator.of(context).pop();
+                      },
                   child: TitleItem(icon: "home", text: "Go To Home"),
                 ),
                 SizedBox(height: 24),

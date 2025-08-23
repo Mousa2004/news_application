@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:news_application/apptheme.dart';
 
+import 'package:news_application/apptheme.dart';
+import 'package:news_application/model/news_response/article.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class NewsItem extends StatelessWidget {
-  const NewsItem({super.key});
+  final News news;
+  const NewsItem({super.key, required this.news});
 
   @override
   Widget build(BuildContext context) {
-    final fifteenAgo = DateTime.now().subtract(Duration(minutes: 20));
     return Container(
       padding: EdgeInsets.all(8),
       margin: EdgeInsets.only(left: 16, right: 16),
@@ -21,27 +22,39 @@ class NewsItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
-            "assets/images/news.png",
-            height: MediaQuery.sizeOf(context).height * 0.25,
-            width: double.infinity,
-            fit: BoxFit.fill,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image.network(
+              news.urlToImage ??
+                  "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg",
+              height: MediaQuery.sizeOf(context).height * 0.25,
+              width: double.infinity,
+              fit: BoxFit.fill,
+            ),
           ),
           SizedBox(height: 10),
           Text(
-            "40-year-old man falls 200 feet to his death\nwhile canyoneering at national park",
+            news.title!,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
             style: Theme.of(context).textTheme.titleMedium,
           ),
           SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "By : Jon Haworth",
-                style: Theme.of(context).textTheme.labelMedium,
+              Expanded(
+                child: Text(
+                  "By : ${news.author}",
+
+                  style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ),
+              SizedBox(width: 8),
               Text(
-                timeago.format(fifteenAgo),
+                timeago.format(news.publishedAt!),
                 style: Theme.of(context).textTheme.labelMedium,
               ),
             ],

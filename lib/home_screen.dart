@@ -3,6 +3,7 @@ import 'package:news_application/categories/category_view.dart';
 import 'package:news_application/drawer/drawer_home.dart';
 import 'package:news_application/model/category_model.dart';
 import 'package:news_application/news/news_view.dart';
+import 'package:news_application/news/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routName = "/home";
@@ -23,7 +24,14 @@ class _HomeScreenState extends State<HomeScreen> {
           selectCategory == null ? "Home" : selectCategory!.name,
           style: textTheme.titleLarge,
         ),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(SearchScreen.routName);
+            },
+            icon: Icon(Icons.search),
+          ),
+        ],
       ),
       drawer: DrawerHome(resetSelected: resetSelectedCategory),
       body: selectCategory == null
