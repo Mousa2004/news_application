@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:news_application/apptheme.dart';
 
 class TitleItem extends StatelessWidget {
   final String icon;
@@ -19,9 +20,10 @@ class TitleItem extends StatelessWidget {
         SizedBox(width: 8),
         Text(
           text,
-          style: Theme.of(
-            context,
-          ).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w700),
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+            fontWeight: FontWeight.w700,
+            color: Apptheme.white,
+          ),
         ),
       ],
     );

@@ -40,4 +40,40 @@ class Apptheme {
       ),
     ),
   );
+
+  static ThemeData lightTheme = ThemeData(
+    scaffoldBackgroundColor: white,
+    appBarTheme: AppBarTheme(
+      backgroundColor: white,
+      centerTitle: true,
+      iconTheme: IconThemeData(color: black),
+    ),
+    textTheme: TextTheme(
+      headlineSmall: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w500,
+        color: black,
+      ),
+      titleLarge: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+        color: black,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w700,
+        color: black,
+      ),
+      titleSmall: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        color: black,
+      ),
+      labelMedium: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        color: grey,
+      ),
+    ),
+  );
 }

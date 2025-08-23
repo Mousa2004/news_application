@@ -2,9 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:news_application/apptheme.dart';
 import 'package:news_application/home_screen.dart';
 import 'package:news_application/news/search_screen.dart';
+import 'package:news_application/provider/setting_theme_provider.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => SettingThemeProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -12,6 +21,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SettingThemeProvider settingThemeProvider =
+        Provider.of<SettingThemeProvider>(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: HomeScreen.routName,
@@ -19,8 +31,9 @@ class MyApp extends StatelessWidget {
         HomeScreen.routName: (_) => HomeScreen(),
         SearchScreen.routName: (_) => SearchScreen(),
       },
-      theme: Apptheme.darkTheme,
-      themeMode: ThemeMode.dark,
+      theme: Apptheme.lightTheme,
+      darkTheme: Apptheme.darkTheme,
+      themeMode: settingThemeProvider.themeMode,
     );
   }
 }

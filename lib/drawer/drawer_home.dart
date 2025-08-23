@@ -2,6 +2,8 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:news_application/apptheme.dart';
 import 'package:news_application/drawer/title_item.dart';
+import 'package:news_application/provider/setting_theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class DrawerHome extends StatefulWidget {
   final void Function()? onTap;
@@ -13,7 +15,7 @@ class DrawerHome extends StatefulWidget {
 }
 
 class _DrawerHomeState extends State<DrawerHome> {
-  List<String> getTheme = ["Dark", "Light"];
+  List<String> themes = ["light", "dark"];
   List<Language> getLanguage = [
     Language(code: "en", lang: "English"),
     Language(code: "ar", lang: "Arabic"),
@@ -21,6 +23,8 @@ class _DrawerHomeState extends State<DrawerHome> {
 
   @override
   Widget build(BuildContext context) {
+    SettingThemeProvider settingThemeProvider =
+        Provider.of<SettingThemeProvider>(context);
     return Container(
       width: MediaQuery.sizeOf(context).width * 0.7,
       height: MediaQuery.sizeOf(context).height,
@@ -82,19 +86,26 @@ class _DrawerHomeState extends State<DrawerHome> {
                     ),
                     underline: SizedBox(),
 
-                    value: getTheme[0],
-                    items: getTheme
+                    value: settingThemeProvider.isLight ? "light" : "dark",
+                    items: themes
                         .map(
                           (theme) => DropdownMenuItem<String>(
                             value: theme,
                             child: Text(
                               theme,
-                              style: Theme.of(context).textTheme.titleLarge,
+                              style: Theme.of(context).textTheme.titleLarge!
+                                  .copyWith(color: Apptheme.white),
                             ),
                           ),
                         )
                         .toList(),
-                    onChanged: (value) {},
+                    onChanged: (theme) {
+                      if (theme == "light") {
+                        settingThemeProvider.changeTheme(ThemeMode.light);
+                      } else {
+                        settingThemeProvider.changeTheme(ThemeMode.dark);
+                      }
+                    },
                   ),
                 ),
                 SizedBox(height: 24),
@@ -128,11 +139,12 @@ class _DrawerHomeState extends State<DrawerHome> {
                     value: getLanguage[0].code,
                     items: getLanguage
                         .map(
-                          (Lang) => DropdownMenuItem<String>(
-                            value: Lang.code,
+                          (language) => DropdownMenuItem<String>(
+                            value: language.code,
                             child: Text(
-                              Lang.lang,
-                              style: Theme.of(context).textTheme.titleLarge,
+                              language.lang,
+                              style: Theme.of(context).textTheme.titleLarge!
+                                  .copyWith(color: Apptheme.white),
                             ),
                           ),
                         )

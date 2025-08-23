@@ -81,7 +81,8 @@ class ShowDetailsButton extends StatelessWidget {
                       },
                       child: Text(
                         "View Full Articel",
-                        style: Theme.of(context).textTheme.titleMedium,
+                        style: Theme.of(context).textTheme.titleMedium!
+                            .copyWith(color: Apptheme.white),
                       ),
                     ),
                   ),
@@ -101,7 +102,8 @@ class ShowDetailsButton extends StatelessWidget {
                       child: Text(
                         textAlign: TextAlign.center,
                         "Browsing from Google",
-                        style: Theme.of(context).textTheme.titleMedium,
+                        style: Theme.of(context).textTheme.titleMedium!
+                            .copyWith(color: Apptheme.white),
                       ),
                     ),
                   ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_application/categories/category_item.dart';
 import 'package:news_application/model/category_model.dart';
+import 'package:news_application/provider/setting_theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class CategoryView extends StatelessWidget {
   final void Function(CategoryModel) categorySelected;
@@ -8,6 +10,8 @@ class CategoryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SettingThemeProvider settingThemeProvider =
+        Provider.of<SettingThemeProvider>(context);
     TextTheme textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -23,14 +27,22 @@ class CategoryView extends StatelessWidget {
             child: ListView.separated(
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
-                  categorySelected(CategoryModel.categories[index]);
+                  categorySelected(
+                    settingThemeProvider.isLight
+                        ? CategoryModel.categoriesDark[index]
+                        : CategoryModel.categoriesLight[index],
+                  );
                 },
                 child: CategoryItem(
-                  imageName: CategoryModel.categories[index].imageName,
+                  imageName: settingThemeProvider.isLight
+                      ? CategoryModel.categoriesDark[index].imageName
+                      : CategoryModel.categoriesLight[index].imageName,
                 ),
               ),
               separatorBuilder: (context, index) => SizedBox(height: 16),
-              itemCount: CategoryModel.categories.length,
+              itemCount: settingThemeProvider.isLight
+                  ? CategoryModel.categoriesDark.length
+                  : CategoryModel.categoriesLight.length,
             ),
           ),
         ],

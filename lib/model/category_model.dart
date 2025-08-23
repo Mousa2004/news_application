@@ -8,7 +8,7 @@ class CategoryModel {
     required this.imageName,
   });
 
-  static List<CategoryModel> categories = [
+  static List<CategoryModel> categoriesLight = [
     CategoryModel(
       id: 'general',
       name: "General",
@@ -43,6 +43,44 @@ class CategoryModel {
       id: 'science',
       name: "Science",
       imageName: "assets/images/science.png",
+    ),
+  ];
+
+  static List<CategoryModel> categoriesDark = [
+    CategoryModel(
+      id: 'general',
+      name: "General",
+      imageName: "assets/images/general_dark.png",
+    ),
+    CategoryModel(
+      id: 'business',
+      name: "Business",
+      imageName: "assets/images/business_dark.png",
+    ),
+    CategoryModel(
+      id: 'sports',
+      name: "Sports",
+      imageName: "assets/images/sport_dark.png",
+    ),
+    CategoryModel(
+      id: 'technology',
+      name: "Technology",
+      imageName: "assets/images/technology_dark.png",
+    ),
+    CategoryModel(
+      id: 'entertainment',
+      name: "Entertainment",
+      imageName: "assets/images/entertainment_dark.png",
+    ),
+    CategoryModel(
+      id: 'health',
+      name: "Health",
+      imageName: "assets/images/health_dark.png",
+    ),
+    CategoryModel(
+      id: 'science',
+      name: "Science",
+      imageName: "assets/images/science_dark.png",
     ),
   ];
 }

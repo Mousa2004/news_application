@@ -4,6 +4,8 @@ import 'package:news_application/apptheme.dart';
 import 'package:news_application/model/news_response/news_response.dart';
 import 'package:news_application/news/news_item.dart';
 import 'package:news_application/news/show_details_button.dart';
+import 'package:news_application/provider/setting_theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class SearchScreen extends StatefulWidget {
   static const String routName = "/search";
@@ -31,6 +33,8 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SettingThemeProvider settingThemeProvider =
+        Provider.of<SettingThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("Search", style: Theme.of(context).textTheme.titleLarge),
@@ -55,7 +59,11 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
-                    borderSide: BorderSide(color: Apptheme.white),
+                    borderSide: BorderSide(
+                      color: settingThemeProvider.isLight
+                          ? Apptheme.black
+                          : Apptheme.white,
+                    ),
                   ),
                 ),
               ),
