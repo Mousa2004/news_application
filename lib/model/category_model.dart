@@ -12,37 +12,37 @@ class CategoryModel {
     CategoryModel(
       id: 'general',
       name: "General",
-      imageName: "assets/images/general_dark.png",
+      imageName: "assets/images/general.png",
     ),
     CategoryModel(
       id: 'business',
       name: "Business",
-      imageName: "assets/images/business_dark.png",
+      imageName: "assets/images/business.png",
     ),
     CategoryModel(
       id: 'sports',
       name: "Sports",
-      imageName: "assets/images/sport_dark.png",
+      imageName: "assets/images/sport.png",
     ),
     CategoryModel(
       id: 'technology',
       name: "Technology",
-      imageName: "assets/images/technology_dark.png",
+      imageName: "assets/images/technology.png",
     ),
     CategoryModel(
       id: 'entertainment',
       name: "Entertainment",
-      imageName: "assets/images/entertainment_dark.png",
+      imageName: "assets/images/entertainment.png",
     ),
     CategoryModel(
       id: 'health',
       name: "Health",
-      imageName: "assets/images/health_dark.png",
+      imageName: "assets/images/health.png",
     ),
     CategoryModel(
       id: 'science',
       name: "Science",
-      imageName: "assets/images/science_dark.png",
+      imageName: "assets/images/science.png",
     ),
   ];
 }
