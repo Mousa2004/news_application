@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:news_application/apptheme.dart';
-import 'package:news_application/home_screen.dart';
-import 'package:news_application/news/search_screen.dart';
-import 'package:news_application/provider/setting_theme_provider.dart';
+import 'package:news_application/shared/view/widget/apptheme.dart';
+import 'package:news_application/home/views/screen/home_screen.dart';
+import 'package:news_application/news/views/widget/search_screen.dart';
+import 'package:news_application/shared/view_model/setting_theme_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() async {

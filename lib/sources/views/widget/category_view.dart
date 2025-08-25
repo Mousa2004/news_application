@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news_application/categories/category_item.dart';
-import 'package:news_application/model/category_model.dart';
-import 'package:news_application/provider/setting_theme_provider.dart';
+import 'package:news_application/sources/views/widget/category_item.dart';
+import 'package:news_application/home/data/models/category_model.dart';
+import 'package:news_application/shared/view_model/setting_theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class CategoryView extends StatelessWidget {

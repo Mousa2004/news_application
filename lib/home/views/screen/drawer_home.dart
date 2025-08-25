@@ -1,8 +1,8 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:news_application/apptheme.dart';
-import 'package:news_application/drawer/title_item.dart';
-import 'package:news_application/provider/setting_theme_provider.dart';
+import 'package:news_application/shared/view/widget/apptheme.dart';
+import 'package:news_application/home/views/screen/title_item.dart';
+import 'package:news_application/shared/view_model/setting_theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class DrawerHome extends StatefulWidget {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:news_application/categories/category_view.dart';
-import 'package:news_application/drawer/drawer_home.dart';
-import 'package:news_application/model/category_model.dart';
-import 'package:news_application/news/news_view.dart';
-import 'package:news_application/news/search_screen.dart';
+import 'package:news_application/sources/views/widget/category_view.dart';
+import 'package:news_application/home/views/screen/drawer_home.dart';
+import 'package:news_application/home/data/models/category_model.dart';
+import 'package:news_application/news/views/widget/news_view.dart';
+import 'package:news_application/news/views/widget/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routName = "/home";

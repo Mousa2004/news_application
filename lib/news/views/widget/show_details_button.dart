@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news_application/apptheme.dart';
-import 'package:news_application/model/news_response/article.dart';
-import 'package:news_application/news/news_details_screen.dart';
+import 'package:news_application/shared/view/widget/apptheme.dart';
+import 'package:news_application/news/data/models/article.dart';
+import 'package:news_application/news/views/widget/news_details_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ShowDetailsButton extends StatelessWidget {

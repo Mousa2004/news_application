@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:news_application/api/api_services.dart';
-import 'package:news_application/apptheme.dart';
-import 'package:news_application/model/news_response/news_response.dart';
-import 'package:news_application/news/news_item.dart';
-import 'package:news_application/news/show_details_button.dart';
-import 'package:news_application/provider/setting_theme_provider.dart';
+import 'package:news_application/news/data/data_sources/news_data_sources.dart';
+
+import 'package:news_application/shared/view/widget/apptheme.dart';
+import 'package:news_application/news/data/models/news_response.dart';
+import 'package:news_application/news/views/widget/news_item.dart';
+import 'package:news_application/news/views/widget/show_details_button.dart';
+import 'package:news_application/shared/view_model/setting_theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -22,7 +23,7 @@ class _SearchScreenState extends State<SearchScreen> {
   void _onSearchChanged(String query) {
     if (query.isNotEmpty) {
       setState(() {
-        searchResult = ApiServices.searchNews(query);
+        searchResult = NewsDataSources.searchNews(query);
       });
     } else {
       setState(() {

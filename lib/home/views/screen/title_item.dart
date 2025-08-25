@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:news_application/apptheme.dart';
+import 'package:news_application/shared/view/widget/apptheme.dart';
 
 class TitleItem extends StatelessWidget {
   final String icon;
