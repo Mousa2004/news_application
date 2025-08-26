@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:news_application/news/data/models/article.dart';
 import 'package:news_application/shared/view_model/api_constant.dart';
 import 'package:news_application/news/data/models/news_response.dart';
 
 class NewsDataSources {
-  Future<NewsResponse> getNews(String newsId, int page, int pageSize) async {
+  Future<List<News>> getNews(String newsId, int page, int pageSize) async {
     Uri uri = Uri.https(ApiConstant.apiBase, ApiConstant.newsEndPoints, {
       "apiKey": ApiConstant.apiKey,
       "sources": newsId,
@@ -15,8 +16,14 @@ class NewsDataSources {
     http.Response response = await http.get(uri);
 
     Map<String, dynamic> json = jsonDecode(response.body);
-    print(json);
-    return NewsResponse.fromJson(json);
+
+    NewsResponse newsResponse = NewsResponse.fromJson(json);
+
+    if (newsResponse.status == "ok" && newsResponse.newsList != null) {
+      return newsResponse.newsList!;
+    } else {
+      throw Exception("Faild to load news");
+    }
   }
 
   static Future<NewsResponse> searchNews(String query) async {
