@@ -26,7 +26,7 @@ class NewsDataSources {
     }
   }
 
-  static Future<NewsResponse> searchNews(String query) async {
+  Future<List<News>> searchNews(String query) async {
     Uri uri = Uri.https(ApiConstant.apiBase, ApiConstant.newsEndPoints, {
       "apiKey": ApiConstant.apiKey,
       "q": query,
@@ -35,6 +35,12 @@ class NewsDataSources {
 
     Map<String, dynamic> json = jsonDecode(response.body);
 
-    return NewsResponse.fromJson(json);
+    NewsResponse newsResponse = NewsResponse.fromJson(json);
+
+    if (newsResponse.status == "ok" && newsResponse.newsList != null) {
+      return newsResponse.newsList!;
+    } else {
+      throw Exception("No results found.");
+    }
   }
 }

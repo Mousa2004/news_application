@@ -5,6 +5,7 @@ import 'package:news_application/news/data/models/article.dart';
 class NewsViewModelNews with ChangeNotifier {
   NewsDataSources newsDataSources = NewsDataSources();
   List<News> newsList = [];
+  List<News> searchNewsList = [];
   String? errorMessage;
   bool isLoading = false;
   Future<void> getNews(String newsId, int page, int pageSize) async {
@@ -22,6 +23,18 @@ class NewsViewModelNews with ChangeNotifier {
 
   void clearNews() {
     newsList.clear();
+    notifyListeners();
+  }
+
+  Future<void> searchNews(String query) async {
+    isLoading = true;
+    notifyListeners();
+    try {
+      searchNewsList = await newsDataSources.searchNews(query);
+    } catch (error) {
+      errorMessage = error.toString();
+    }
+    isLoading = false;
     notifyListeners();
   }
 }
