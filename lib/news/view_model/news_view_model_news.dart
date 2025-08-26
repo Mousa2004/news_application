@@ -1,9 +1,12 @@
 import 'package:flutter/widgets.dart';
-import 'package:news_application/news/data/data_sources/news_data_sources.dart';
 import 'package:news_application/news/data/models/article.dart';
+import 'package:news_application/news/data/repositories/news_repository.dart';
+import 'package:news_application/shared/view/widget/service_locator.dart';
 
 class NewsViewModelNews with ChangeNotifier {
-  NewsDataSources newsDataSources = NewsDataSources();
+  NewsRepository newsDataSources = NewsRepository(
+    ServiceLocator.newsDataSources,
+  );
   List<News> newsList = [];
   List<News> searchNewsList = [];
   String? errorMessage;

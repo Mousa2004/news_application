@@ -1,12 +1,15 @@
 import 'package:flutter/widgets.dart';
+import 'package:news_application/shared/view/widget/service_locator.dart';
 import 'package:news_application/sources/data/models/source.dart';
-import 'package:news_application/sources/data/data_sources/source_data_sources.dart';
+import 'package:news_application/sources/data/repositories/source_repository.dart';
 
 class SourceViewModelSources with ChangeNotifier {
   List<Source> sources = [];
   String? errorMessage;
   bool isloading = false;
-  SourceDataSources sourceDataSources = SourceDataSources();
+  SourceRepository sourceDataSources = SourceRepository(
+    ServiceLocator.sourcesDataSources,
+  );
 
   Future<void> getSources(String categoryId) async {
     isloading = true;
