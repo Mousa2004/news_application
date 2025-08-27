@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_application/shared/view/widget/apptheme.dart';
 import 'package:news_application/home/views/screen/drawer_home.dart';
 import 'package:news_application/home/views/screen/home_screen.dart';
-import 'package:news_application/home/data/models/category_model.dart';
+import 'package:news_application/categories/data/models/category_model.dart';
 import 'package:news_application/news/data/models/article.dart';
 
 import 'package:timeago/timeago.dart' as timeago;

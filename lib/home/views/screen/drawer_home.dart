@@ -2,7 +2,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:news_application/shared/view/widget/apptheme.dart';
 import 'package:news_application/home/views/screen/title_item.dart';
-import 'package:news_application/shared/view_model/setting_theme_provider.dart';
+import 'package:news_application/shared/view_model/setting_theme.dart';
 import 'package:provider/provider.dart';
 
 class DrawerHome extends StatefulWidget {
@@ -23,8 +23,7 @@ class _DrawerHomeState extends State<DrawerHome> {
 
   @override
   Widget build(BuildContext context) {
-    SettingThemeProvider settingThemeProvider =
-        Provider.of<SettingThemeProvider>(context);
+    SettingTheme settingThemeProvider = Provider.of<SettingTheme>(context);
     return Container(
       width: MediaQuery.sizeOf(context).width * 0.7,
       height: MediaQuery.sizeOf(context).height,

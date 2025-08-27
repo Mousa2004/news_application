@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_application/news/view_model/news_state.dart';
 
 import 'package:news_application/news/view_model/news_view_model_news.dart';
 
@@ -7,7 +9,7 @@ import 'package:news_application/shared/view/widget/apptheme.dart';
 import 'package:news_application/news/views/widget/news_item.dart';
 import 'package:news_application/news/views/widget/show_details_button.dart';
 import 'package:news_application/shared/view/widget/customed_error_messages.dart';
-import 'package:news_application/shared/view_model/setting_theme_provider.dart';
+import 'package:news_application/shared/view_model/setting_theme.dart';
 import 'package:provider/provider.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -24,8 +26,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SettingThemeProvider settingThemeProvider =
-        Provider.of<SettingThemeProvider>(context);
+    SettingTheme settingThemeProvider = Provider.of<SettingTheme>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("Search", style: Theme.of(context).textTheme.titleLarge),
@@ -61,25 +62,24 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
             const SizedBox(height: 16),
             Expanded(
-              child: ChangeNotifierProvider(
+              child: BlocProvider(
                 create: (context) => newsViewModelNews,
-                child: Consumer<NewsViewModelNews>(
-                  builder: (_, search, _) {
-                    if (search.isLoading) {
+                child: BlocBuilder<NewsViewModelNews, NewsState>(
+                  builder: (_, state) {
+                    if (state is GetNewsLoading) {
                       return Center(child: CircularProgressIndicator());
-                    } else if (search.errorMessage != null) {
-                      return CustomedErrorMessages(
-                        message: search.errorMessage!,
-                      );
-                    } else if (search.searchNewsList.isEmpty) {
-                      return Center(
-                        child: Text(
-                          "No results found.",
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                      );
-                    } else {
-                      final articles = search.searchNewsList;
+                    } else if (state is GetNewsError) {
+                      return CustomedErrorMessages(message: state.message);
+                    } else if (state is GetSearchNewsSuccess) {
+                      final articles = state.searchNewsList;
+                      if (articles.isEmpty) {
+                        return const Center(
+                          child: Text(
+                            "No results found",
+                            style: TextStyle(color: Colors.grey, fontSize: 16),
+                          ),
+                        );
+                      }
                       return ListView.separated(
                         separatorBuilder: (context, index) =>
                             SizedBox(height: 16),
@@ -100,7 +100,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                         0.05,
                                   ),
                                   child: ShowDetailsButton(
-                                    news: search.searchNewsList[index],
+                                    news: state.searchNewsList[index],
                                   ),
                                 ),
                               );
@@ -110,6 +110,8 @@ class _SearchScreenState extends State<SearchScreen> {
                           );
                         },
                       );
+                    } else {
+                      return SizedBox();
                     }
                   },
                 ),

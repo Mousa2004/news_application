@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news_application/sources/views/widget/category_item.dart';
-import 'package:news_application/home/data/models/category_model.dart';
-import 'package:news_application/shared/view_model/setting_theme_provider.dart';
+import 'package:news_application/categories/views/widget/category_item.dart';
+import 'package:news_application/categories/data/models/category_model.dart';
+import 'package:news_application/shared/view_model/setting_theme.dart';
 import 'package:provider/provider.dart';
 
 class CategoryView extends StatelessWidget {
@@ -10,8 +10,7 @@ class CategoryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SettingThemeProvider settingThemeProvider =
-        Provider.of<SettingThemeProvider>(context);
+    SettingTheme settingThemeProvider = Provider.of<SettingTheme>(context);
     TextTheme textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),

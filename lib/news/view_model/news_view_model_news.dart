@@ -1,43 +1,47 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_application/news/data/models/article.dart';
 import 'package:news_application/news/data/repositories/news_repository.dart';
+import 'package:news_application/news/view_model/news_state.dart';
 import 'package:news_application/shared/view/widget/service_locator.dart';
 
-class NewsViewModelNews with ChangeNotifier {
+class NewsViewModelNews extends Cubit<NewsState> {
+  NewsViewModelNews() : super(InitialState());
   NewsRepository newsDataSources = NewsRepository(
     ServiceLocator.newsDataSources,
   );
   List<News> newsList = [];
-  List<News> searchNewsList = [];
-  String? errorMessage;
-  bool isLoading = false;
+
   Future<void> getNews(String newsId, int page, int pageSize) async {
-    isLoading = true;
-    notifyListeners();
+    if (page == 1) {
+      emit(GetNewsLoading());
+    } else {
+      emit(GetNewsPaginationLoading());
+    }
+
     try {
       if (page == 1) newsList.clear();
-      newsList.addAll(await newsDataSources.getNews(newsId, page, pageSize));
+      final newData = await newsDataSources.getNews(newsId, page, pageSize);
+
+      newsList.addAll(newData);
+
+      emit(GetNewsSuccess(List.from(newsList)));
     } catch (error) {
-      errorMessage = error.toString();
+      emit(GetNewsError(error.toString()));
     }
-    isLoading = false;
-    notifyListeners();
   }
 
   void clearNews() {
     newsList.clear();
-    notifyListeners();
   }
 
   Future<void> searchNews(String query) async {
-    isLoading = true;
-    notifyListeners();
+    emit(GetNewsLoading());
+
     try {
-      searchNewsList = await newsDataSources.searchNews(query);
+      List<News> searchNewsList = await newsDataSources.searchNews(query);
+      emit(GetSearchNewsSuccess(searchNewsList));
     } catch (error) {
-      errorMessage = error.toString();
+      emit(GetNewsError(error.toString()));
     }
-    isLoading = false;
-    notifyListeners();
   }
 }
