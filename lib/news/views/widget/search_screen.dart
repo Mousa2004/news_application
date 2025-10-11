@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_application/news/view_model/news_state.dart';
 
 import 'package:news_application/news/view_model/news_view_model_news.dart';
@@ -46,11 +47,11 @@ class _SearchScreenState extends State<SearchScreen> {
                   prefixIcon: Icon(Icons.search),
                   hintText: "Search news...",
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(16.r),
                     borderSide: BorderSide(color: Apptheme.grey),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(16.r),
                     borderSide: BorderSide(
                       color: settingThemeProvider.isLight
                           ? Apptheme.black
@@ -60,7 +61,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
             Expanded(
               child: BlocProvider(
                 create: (context) => newsViewModelNews,
@@ -73,16 +74,19 @@ class _SearchScreenState extends State<SearchScreen> {
                     } else if (state is GetSearchNewsSuccess) {
                       final articles = state.searchNewsList;
                       if (articles.isEmpty) {
-                        return const Center(
+                        return Center(
                           child: Text(
                             "No results found",
-                            style: TextStyle(color: Colors.grey, fontSize: 16),
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16.sp,
+                            ),
                           ),
                         );
                       }
                       return ListView.separated(
                         separatorBuilder: (context, index) =>
-                            SizedBox(height: 16),
+                            SizedBox(height: 16.h),
                         itemCount: articles.length,
                         itemBuilder: (context, index) {
                           final article = articles[index];
@@ -97,7 +101,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   margin: EdgeInsets.only(
                                     bottom:
                                         MediaQuery.sizeOf(context).height *
-                                        0.05,
+                                        0.05.h,
                                   ),
                                   child: ShowDetailsButton(
                                     news: state.searchNewsList[index],

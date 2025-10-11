@@ -1,5 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_application/shared/view/widget/apptheme.dart';
 import 'package:news_application/home/views/screen/title_item.dart';
 import 'package:news_application/shared/view_model/setting_theme.dart';
@@ -25,14 +26,14 @@ class _DrawerHomeState extends State<DrawerHome> {
   Widget build(BuildContext context) {
     SettingTheme settingThemeProvider = Provider.of<SettingTheme>(context);
     return Container(
-      width: MediaQuery.sizeOf(context).width * 0.7,
+      width: MediaQuery.sizeOf(context).width * 0.7.w,
       height: MediaQuery.sizeOf(context).height,
       decoration: BoxDecoration(color: Apptheme.black),
       child: Column(
         children: [
           Container(
             alignment: Alignment.center,
-            height: MediaQuery.sizeOf(context).height * 0.2,
+            height: MediaQuery.sizeOf(context).height * 0.2.h,
             width: double.infinity,
             decoration: BoxDecoration(color: Apptheme.white),
             child: Text(
@@ -57,16 +58,16 @@ class _DrawerHomeState extends State<DrawerHome> {
                       },
                   child: TitleItem(icon: "home", text: "Go To Home"),
                 ),
-                SizedBox(height: 24),
+                SizedBox(height: 24.h),
                 Divider(color: Apptheme.white),
-                SizedBox(height: 24),
+                SizedBox(height: 24.h),
                 TitleItem(icon: "theme", text: "Theme"),
-                SizedBox(height: 16),
+                SizedBox(height: 16.h),
                 Container(
                   width: double.infinity,
-                  height: 56,
+                  height: 56.h,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(16.r),
                     border: Border.all(color: Apptheme.white),
                   ),
                   child: DropdownButton2<String>(
@@ -74,7 +75,7 @@ class _DrawerHomeState extends State<DrawerHome> {
                     dropdownStyleData: DropdownStyleData(
                       decoration: BoxDecoration(
                         color: Apptheme.grey,
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(16.r),
                       ),
 
                       offset: Offset(0, -2),
@@ -107,16 +108,16 @@ class _DrawerHomeState extends State<DrawerHome> {
                     },
                   ),
                 ),
-                SizedBox(height: 24),
+                SizedBox(height: 24.h),
                 Divider(color: Apptheme.white),
-                SizedBox(height: 24),
+                SizedBox(height: 24.h),
                 TitleItem(icon: "language", text: "Language"),
-                SizedBox(height: 16),
+                SizedBox(height: 16.h),
                 Container(
                   width: double.infinity,
-                  height: 56,
+                  height: 56.h,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(16.r),
                     border: Border.all(color: Apptheme.white),
                   ),
                   child: DropdownButton2<String>(
@@ -124,7 +125,7 @@ class _DrawerHomeState extends State<DrawerHome> {
                     dropdownStyleData: DropdownStyleData(
                       decoration: BoxDecoration(
                         color: Apptheme.grey,
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(16.r),
                       ),
 
                       offset: Offset(0, -2),

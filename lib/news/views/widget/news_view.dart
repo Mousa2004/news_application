@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_application/news/view_model/news_state.dart';
 import 'package:news_application/news/view_model/news_view_model_news.dart';
 import 'package:news_application/shared/view/widget/apptheme.dart';
@@ -108,7 +109,7 @@ class _NewsViewState extends State<NewsView> {
                         .toList(),
                   ),
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16.h),
                 Expanded(
                   child: BlocBuilder<NewsViewModelNews, NewsState>(
                     builder: (_, viewNews) {
@@ -137,7 +138,7 @@ class _NewsViewState extends State<NewsView> {
                                       margin: EdgeInsets.only(
                                         bottom:
                                             MediaQuery.sizeOf(context).height *
-                                            0.05,
+                                            0.05.h,
                                       ),
                                       child: ShowDetailsButton(news: news),
                                     ),
@@ -169,7 +170,7 @@ class _NewsViewState extends State<NewsView> {
                             }
                           },
                           separatorBuilder: (context, index) =>
-                              const SizedBox(height: 16),
+                              SizedBox(height: 16.h),
                           itemCount: newsList.length + 1,
                         );
                       }

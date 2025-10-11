@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news_application/shared/view/widget/apptheme.dart';
 
@@ -13,11 +14,11 @@ class TitleItem extends StatelessWidget {
       children: [
         SvgPicture.asset(
           "assets/icons/$icon.svg",
-          height: 24,
-          width: 24,
+          height: 24.h,
+          width: 24.w,
           fit: BoxFit.scaleDown,
         ),
-        SizedBox(width: 8),
+        SizedBox(width: 8.w),
         Text(
           text,
           style: Theme.of(context).textTheme.titleLarge!.copyWith(

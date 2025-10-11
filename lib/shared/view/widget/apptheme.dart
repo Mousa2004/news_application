@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Apptheme {
   static const Color black = Color(0xff171717);
@@ -14,27 +15,27 @@ class Apptheme {
     ),
     textTheme: TextTheme(
       headlineSmall: TextStyle(
-        fontSize: 24,
+        fontSize: 24.sp,
         fontWeight: FontWeight.w500,
         color: white,
       ),
       titleLarge: TextStyle(
-        fontSize: 20,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w500,
         color: white,
       ),
       titleMedium: TextStyle(
-        fontSize: 16,
+        fontSize: 16.sp,
         fontWeight: FontWeight.w700,
         color: white,
       ),
       titleSmall: TextStyle(
-        fontSize: 14,
+        fontSize: 14.sp,
         fontWeight: FontWeight.w500,
         color: white,
       ),
       labelMedium: TextStyle(
-        fontSize: 12,
+        fontSize: 12.sp,
         fontWeight: FontWeight.w500,
         color: grey,
       ),
@@ -50,27 +51,27 @@ class Apptheme {
     ),
     textTheme: TextTheme(
       headlineSmall: TextStyle(
-        fontSize: 24,
+        fontSize: 24.sp,
         fontWeight: FontWeight.w500,
         color: black,
       ),
       titleLarge: TextStyle(
-        fontSize: 20,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w500,
         color: black,
       ),
       titleMedium: TextStyle(
-        fontSize: 16,
+        fontSize: 16.sp,
         fontWeight: FontWeight.w700,
         color: black,
       ),
       titleSmall: TextStyle(
-        fontSize: 14,
+        fontSize: 14.sp,
         fontWeight: FontWeight.w500,
         color: black,
       ),
       labelMedium: TextStyle(
-        fontSize: 12,
+        fontSize: 12.sp,
         fontWeight: FontWeight.w500,
         color: grey,
       ),

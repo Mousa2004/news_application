@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_application/shared/view/widget/apptheme.dart';
 import 'package:news_application/home/views/screen/drawer_home.dart';
 import 'package:news_application/home/views/screen/home_screen.dart';
@@ -42,7 +43,7 @@ class _NewsDetailsScreenState extends State<NewsDetailsScreen> {
                 context,
               ).textTheme.headlineSmall!.copyWith(color: Apptheme.black),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -68,7 +69,7 @@ class _NewsDetailsScreenState extends State<NewsDetailsScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 8.h),
             Text(
               widget.news.publishedAt != null
                   ? timeago.format(widget.news.publishedAt!)
@@ -79,25 +80,25 @@ class _NewsDetailsScreenState extends State<NewsDetailsScreen> {
               ),
             ),
 
-            SizedBox(height: 40),
+            SizedBox(height: 40.h),
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: Image.network(
                 widget.news.urlToImage ??
                     "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg",
-                height: MediaQuery.sizeOf(context).height * 0.3,
+                height: MediaQuery.sizeOf(context).height * 0.3.h,
                 width: double.infinity,
                 fit: BoxFit.fill,
               ),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 40.h),
             Text(
               widget.news.description!,
               style: Theme.of(
                 context,
               ).textTheme.titleMedium!.copyWith(color: Apptheme.black),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 20.h),
             Text(
               widget.news.content ?? "",
               style: Theme.of(

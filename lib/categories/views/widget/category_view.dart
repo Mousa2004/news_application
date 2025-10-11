@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_application/categories/views/widget/category_item.dart';
 import 'package:news_application/categories/data/models/category_model.dart';
 import 'package:news_application/shared/view_model/setting_theme.dart';
@@ -21,7 +22,7 @@ class CategoryView extends StatelessWidget {
             "Good Morning\nHere is Some News For You",
             style: textTheme.headlineSmall,
           ),
-          SizedBox(height: 16),
+          SizedBox(height: 16.h),
           Expanded(
             child: ListView.separated(
               itemBuilder: (context, index) => InkWell(
@@ -38,7 +39,7 @@ class CategoryView extends StatelessWidget {
                       : CategoryModel.categoriesLight[index].imageName,
                 ),
               ),
-              separatorBuilder: (context, index) => SizedBox(height: 16),
+              separatorBuilder: (context, index) => SizedBox(height: 16.h),
               itemCount: settingThemeProvider.isLight
                   ? CategoryModel.categoriesDark.length
                   : CategoryModel.categoriesLight.length,

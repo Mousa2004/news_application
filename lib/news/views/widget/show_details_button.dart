@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_application/shared/view/widget/apptheme.dart';
 import 'package:news_application/news/data/models/article.dart';
 import 'package:news_application/news/views/widget/news_details_screen.dart';
@@ -10,7 +11,7 @@ class ShowDetailsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<void> _launchUrl(String? link) async {
+    Future<void> launchNewsUrl(String? link) async {
       if (link == null || link.isEmpty) return;
       final Uri url = Uri.parse(link);
       if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
@@ -26,9 +27,9 @@ class ShowDetailsButton extends StatelessWidget {
             padding: EdgeInsetsDirectional.all(8),
             margin: EdgeInsets.only(left: 10, right: 10),
             width: double.infinity,
-            height: MediaQuery.sizeOf(context).height * 0.48,
+            height: MediaQuery.sizeOf(context).height * 0.48.h,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(16.r),
               border: Border.all(color: Apptheme.white),
               color: Apptheme.white,
             ),
@@ -36,16 +37,16 @@ class ShowDetailsButton extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(16.r),
                   child: Image.network(
                     news.urlToImage ??
                         "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg",
-                    height: MediaQuery.sizeOf(context).height * 0.3,
+                    height: MediaQuery.sizeOf(context).height * 0.3.h,
                     width: double.infinity,
                     fit: BoxFit.fill,
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 Text(
                   textAlign: TextAlign.start,
                   news.title!,
@@ -69,7 +70,7 @@ class ShowDetailsButton extends StatelessWidget {
                     alignment: Alignment.bottomCenter,
                     decoration: BoxDecoration(
                       color: Apptheme.black,
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(16.r),
                     ),
                     child: MaterialButton(
                       onPressed: () {
@@ -87,17 +88,17 @@ class ShowDetailsButton extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 8),
+                SizedBox(width: 8.w),
                 Expanded(
                   child: Container(
                     alignment: Alignment.bottomCenter,
                     decoration: BoxDecoration(
                       color: Apptheme.black,
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(16.r),
                     ),
                     child: MaterialButton(
                       onPressed: () {
-                        _launchUrl(news.url);
+                        launchNewsUrl(news.url);
                       },
                       child: Text(
                         textAlign: TextAlign.center,
