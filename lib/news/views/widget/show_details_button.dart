@@ -67,7 +67,8 @@ class ShowDetailsButton extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    alignment: Alignment.bottomCenter,
+                    height: 50.h,
+                    // alignment: Alignment.bottomCenter,
                     decoration: BoxDecoration(
                       color: Apptheme.black,
                       borderRadius: BorderRadius.circular(16.r),
@@ -81,9 +82,11 @@ class ShowDetailsButton extends StatelessWidget {
                         );
                       },
                       child: Text(
+                        textAlign: TextAlign.center,
                         "View Full Articel",
-                        style: Theme.of(context).textTheme.titleMedium!
-                            .copyWith(color: Apptheme.white),
+                        style: Theme.of(
+                          context,
+                        ).textTheme.titleSmall!.copyWith(color: Apptheme.white),
                       ),
                     ),
                   ),
@@ -91,7 +94,8 @@ class ShowDetailsButton extends StatelessWidget {
                 SizedBox(width: 8.w),
                 Expanded(
                   child: Container(
-                    alignment: Alignment.bottomCenter,
+                    height: 50.h,
+                    // alignment: Alignment.bottomCenter,
                     decoration: BoxDecoration(
                       color: Apptheme.black,
                       borderRadius: BorderRadius.circular(16.r),
@@ -103,8 +107,10 @@ class ShowDetailsButton extends StatelessWidget {
                       child: Text(
                         textAlign: TextAlign.center,
                         "Browsing from Google",
-                        style: Theme.of(context).textTheme.titleMedium!
-                            .copyWith(color: Apptheme.white),
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          color: Apptheme.white,
+                          height: 0,
+                        ),
                       ),
                     ),
                   ),
