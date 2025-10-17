@@ -1,6 +1,6 @@
 # 📰 News Application
 
-A new Flutter project.
+A new Flutter project built with **Flutter** and **Bloc Pattern**.
 
 ## 🚀 Getting Started
 
@@ -17,12 +17,12 @@ samples, guidance on mobile development, and a full API reference.
 
 ---
 
-## 🎥 Project Demo / Download
+## 🎥 Watch Project Demo
 
-You can view or download the demo of the project from the link below:
+Click below to **watch the demo video** of the News Application:
 
 <p align="center">
   <a href="https://drive.google.com/file/d/1lQ_Wa8JYLJ3uqw7Fo-nXs2zcDl2lVx0o/view?usp=sharing" target="_blank">
-    <img src="https://img.shields.io/badge/Download%20from-Google%20Drive-blue?style=for-the-badge&logo=google-drive" alt="Download from Google Drive"/>
+    <img src="https://img.shields.io/badge/Watch%20Demo%20Video-Google%20Drive-red?style=for-the-badge&logo=google-drive" alt="Watch Demo Video"/>
   </a>
 </p>
