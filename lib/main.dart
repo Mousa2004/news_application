@@ -11,6 +11,8 @@ import 'package:news_application/shared/view_model/theme_state.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlockObserver();
+  final settingTheme = SettingTheme();
+  await settingTheme.initTheme();
   runApp(BlocProvider(create: (context) => SettingTheme(), child: MyApp()));
 }
 

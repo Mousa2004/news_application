@@ -8,8 +8,19 @@ class SettingTheme extends Cubit<ThemeState> {
 
   bool get isLight => themeMode == ThemeMode.light;
 
-  SettingTheme() : super(InitialThemeState(ThemeMode.dark)) {
-    loadTheme();
+  SettingTheme() : super(InitialThemeState(ThemeMode.dark));
+
+  Future<void> initTheme() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? savedTheme = prefs.getString("themeMode");
+
+    if (savedTheme == "light") {
+      themeMode = ThemeMode.light;
+    } else {
+      themeMode = ThemeMode.dark;
+    }
+
+    emit(LoadThemeState(themeMode));
   }
 
   void changeTheme(ThemeMode theme) async {
@@ -21,17 +32,5 @@ class SettingTheme extends Cubit<ThemeState> {
       themeMode == ThemeMode.light ? "light" : "dark",
     );
     emit(ChangeThemeState(themeMode));
-  }
-
-  void loadTheme() async {
-    final prefs = await SharedPreferences.getInstance();
-    String? savedTheme = prefs.getString("themeMode");
-
-    if (savedTheme == "light") {
-      themeMode = ThemeMode.light;
-    } else {
-      themeMode = ThemeMode.dark;
-    }
-    emit(LoadThemeState(themeMode));
   }
 }
