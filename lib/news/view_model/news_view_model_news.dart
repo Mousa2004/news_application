@@ -2,13 +2,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_application/news/data/models/article.dart';
 import 'package:news_application/news/data/repositories/news_repository.dart';
 import 'package:news_application/news/view_model/news_state.dart';
-import 'package:news_application/shared/view/widget/service_locator.dart';
 
 class NewsViewModelNews extends Cubit<NewsState> {
-  NewsViewModelNews() : super(InitialState());
-  NewsRepository newsDataSources = NewsRepository(
-    ServiceLocator.newsDataSources,
-  );
+  NewsRepository newsDataSources;
+  NewsViewModelNews(this.newsDataSources) : super(InitialState());
+
   List<News> newsList = [];
 
   Future<void> getNews(String newsId, int page, int pageSize) async {

@@ -5,6 +5,7 @@ import 'package:news_application/news/view_model/news_state.dart';
 import 'package:news_application/news/view_model/news_view_model_news.dart';
 import 'package:news_application/shared/view/widget/apptheme.dart';
 import 'package:news_application/shared/view/widget/customed_error_messages.dart';
+import 'package:news_application/shared/view/widget/service_locator.dart';
 import 'package:news_application/sources/data/models/source.dart';
 import 'package:news_application/news/views/widget/news_item.dart';
 import 'package:news_application/news/views/widget/show_details_button.dart';
@@ -34,8 +35,12 @@ class _NewsViewState extends State<NewsView> {
   @override
   void initState() {
     super.initState();
-    sourceViewModelSources = SourceViewModelSources();
-    newsViewModelNews = NewsViewModelNews();
+    sourceViewModelSources = SourceViewModelSources(
+      injectionSourceRepository(injectionSourcesDataSources()),
+    );
+    newsViewModelNews = NewsViewModelNews(
+      injectionNewsRepository(injectionNewsDataSources()),
+    );
 
     sourceViewModelSources.getSources(widget.categoryId).then((_) {
       final currentState = sourceViewModelSources.state;
