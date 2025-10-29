@@ -1,13 +1,24 @@
-import 'source.dart';
+import 'package:hive/hive.dart';
+import 'package:news_application/sources/data/models/source.dart';
+part 'article.g.dart';
 
-class News {
+@HiveType(typeId: 2)
+class News extends HiveObject {
+  @HiveField(0)
   Source? source;
+  @HiveField(1)
   String? author;
+  @HiveField(2)
   String? title;
+  @HiveField(3)
   String? description;
+  @HiveField(4)
   String? url;
+  @HiveField(5)
   String? urlToImage;
+  @HiveField(6)
   DateTime? publishedAt;
+  @HiveField(7)
   String? content;
 
   News({

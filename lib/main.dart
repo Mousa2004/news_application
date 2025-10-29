@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
+import 'package:news_application/news/data/models/article.dart';
 import 'package:news_application/shared/view/widget/app_block_observer.dart';
 import 'package:news_application/shared/view/widget/apptheme.dart';
 import 'package:news_application/home/views/screen/home_screen.dart';
 import 'package:news_application/news/views/widget/search_screen.dart';
 import 'package:news_application/shared/view_model/setting_theme.dart';
 import 'package:news_application/shared/view_model/theme_state.dart';
+import 'package:news_application/sources/data/models/source.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final appDocumentDirectory = await getApplicationDocumentsDirectory();
+  Hive.init(appDocumentDirectory.path);
+  Hive.registerAdapter(SourceAdapter());
+  Hive.registerAdapter(NewsAdapter());
+
   Bloc.observer = AppBlockObserver();
   final settingTheme = SettingTheme();
   await settingTheme.initTheme();

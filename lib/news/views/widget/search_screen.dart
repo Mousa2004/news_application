@@ -25,7 +25,10 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController search = TextEditingController();
   NewsViewModelNews newsViewModelNews = NewsViewModelNews(
-    injectionNewsRepository(injectionNewsDataSources()),
+    injectionNewsRepository(
+      injectionNewsDataSources(),
+      injectionNewsLocalDataSources(),
+    ),
   );
 
   @override

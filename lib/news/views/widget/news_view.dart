@@ -36,10 +36,16 @@ class _NewsViewState extends State<NewsView> {
   void initState() {
     super.initState();
     sourceViewModelSources = SourceViewModelSources(
-      injectionSourceRepository(injectionSourcesDataSources()),
+      injectionSourceRepository(
+        injectionSourcesDataSources(),
+        injectionSourceLocalDataSources(),
+      ),
     );
     newsViewModelNews = NewsViewModelNews(
-      injectionNewsRepository(injectionNewsDataSources()),
+      injectionNewsRepository(
+        injectionNewsDataSources(),
+        injectionNewsLocalDataSources(),
+      ),
     );
 
     sourceViewModelSources.getSources(widget.categoryId).then((_) {
@@ -160,13 +166,65 @@ class _NewsViewState extends State<NewsView> {
                                   ),
                                 );
                               } else if (!hasMore) {
-                                return const Padding(
-                                  padding: EdgeInsets.all(16.0),
-                                  child: Center(
-                                    child: Text(
-                                      "No more news",
-                                      style: TextStyle(color: Colors.grey),
-                                    ),
+                                return Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical:
+                                        MediaQuery.sizeOf(context).height *
+                                        0.4.h,
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Center(
+                                        child: Text(
+                                          "No more news",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium!
+                                              .copyWith(fontSize: 20),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            MediaQuery.sizeOf(context).height *
+                                            0.02.h,
+                                      ),
+                                      MaterialButton(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadiusGeometry.circular(
+                                                16.r,
+                                              ),
+                                        ),
+                                        color: Apptheme.grey,
+                                        onPressed: () {
+                                          final sourceState =
+                                              sourceViewModelSources.state;
+                                          if (sourceState is GetSourceSuccess) {
+                                            final sources = sourceState.sources;
+                                            if (sources.isNotEmpty) {
+                                              final currentSource =
+                                                  sources[currentIndex];
+                                              newsViewModelNews.getNews(
+                                                currentSource.id!,
+                                                page,
+                                                pageSize,
+                                              );
+                                              sourceViewModelSources.getSources(
+                                                widget.categoryId,
+                                              );
+                                            }
+                                          }
+                                        },
+
+                                        child: Text(
+                                          "Try again",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium!
+                                              .copyWith(fontSize: 20),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 );
                               } else {
