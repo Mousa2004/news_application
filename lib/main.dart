@@ -7,6 +7,7 @@ import 'package:news_application/shared/view/widget/app_block_observer.dart';
 import 'package:news_application/shared/view/widget/apptheme.dart';
 import 'package:news_application/home/views/screen/home_screen.dart';
 import 'package:news_application/news/views/widget/search_screen.dart';
+import 'package:news_application/shared/view/widget/injectable.dart';
 import 'package:news_application/shared/view_model/setting_theme.dart';
 import 'package:news_application/shared/view_model/theme_state.dart';
 import 'package:news_application/sources/data/models/source.dart';
@@ -18,7 +19,7 @@ void main() async {
   Hive.init(appDocumentDirectory.path);
   Hive.registerAdapter(SourceAdapter());
   Hive.registerAdapter(NewsAdapter());
-
+  configureDependencies();
   Bloc.observer = AppBlockObserver();
   final settingTheme = SettingTheme();
   await settingTheme.initTheme();

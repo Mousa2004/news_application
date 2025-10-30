@@ -105,6 +105,7 @@ class _DrawerHomeState extends State<DrawerHome> {
                       } else {
                         settingThemeProvider.changeTheme(ThemeMode.dark);
                       }
+                      Navigator.of(context).pop();
                     },
                   ),
                 ),
