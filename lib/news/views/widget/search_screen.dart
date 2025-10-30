@@ -10,7 +10,7 @@ import 'package:news_application/shared/view/widget/apptheme.dart';
 import 'package:news_application/news/views/widget/news_item.dart';
 import 'package:news_application/news/views/widget/show_details_button.dart';
 import 'package:news_application/shared/view/widget/customed_error_messages.dart';
-import 'package:news_application/shared/view/widget/service_locator.dart';
+import 'package:news_application/shared/view/widget/injectable.dart';
 import 'package:news_application/shared/view_model/setting_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -24,12 +24,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController search = TextEditingController();
-  NewsViewModelNews newsViewModelNews = NewsViewModelNews(
-    injectionNewsRepository(
-      injectionNewsDataSources(),
-      injectionNewsLocalDataSources(),
-    ),
-  );
+  NewsViewModelNews newsViewModelNews = getIt<NewsViewModelNews>();
 
   @override
   Widget build(BuildContext context) {
