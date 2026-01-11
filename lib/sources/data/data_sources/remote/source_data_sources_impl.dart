@@ -7,6 +7,7 @@ import 'package:news_application/sources/data/data_sources/remote/sources_data_s
 import 'package:news_application/sources/data/models/source.dart';
 import 'package:news_application/sources/data/models/source_respnse.dart';
 
+@Named("SourceDataSourcesImpl")
 @Singleton(as: SourcesDataSources)
 class SourceDataSourcesImpl implements SourcesDataSources {
   @override

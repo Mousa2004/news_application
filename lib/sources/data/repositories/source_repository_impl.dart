@@ -9,7 +9,10 @@ import 'package:news_application/sources/data/repositories/source_repository.dar
 class SourceRepositoryImpl implements SourceRepository {
   SourcesDataSources sourcesDataSources;
   SourceLocalDataSources sourceLocalDataSources;
-  SourceRepositoryImpl(this.sourcesDataSources, this.sourceLocalDataSources);
+  SourceRepositoryImpl(
+    @Named("SourceDioDataSourcesImpl") this.sourcesDataSources,
+    @Named("SourceDioLocalDataSourcesImpl") this.sourceLocalDataSources,
+  );
   @override
   Future<List<Source>> getSources(String categoryId) async {
     // internet

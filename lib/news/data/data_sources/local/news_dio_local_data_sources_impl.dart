@@ -3,9 +3,9 @@ import 'package:injectable/injectable.dart';
 import 'package:news_application/news/data/data_sources/local/news_local_data_sources.dart';
 import 'package:news_application/news/data/models/article.dart';
 
-@Named("NewsLocalDataSourcesImpl")
+@Named("NewsDioLocalDataSourcesImpl")
 @Singleton(as: NewsLocalDataSources)
-class NewsLocalDataSourcesImpl implements NewsLocalDataSources {
+class NewsDioLocalDataSourcesImpl implements NewsLocalDataSources {
   @override
   Future<List<News>> getNews(String newsId, int page, int pageSize) async {
     var box = await Hive.openBox("NewsList");

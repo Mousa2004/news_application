@@ -50,6 +50,8 @@ dependencies:
   connectivity_plus: ^7.0.0
   injectable: ^2.5.2
   get_it: ^9.0.5
+  dio: ^5.9.0
+  pretty_dio_logger: ^1.4.0
   
   
   
