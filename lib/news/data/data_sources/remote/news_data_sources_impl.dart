@@ -8,6 +8,7 @@ import 'package:news_application/news/data/models/article.dart';
 import 'package:news_application/shared/view_model/api_constant.dart';
 import 'package:news_application/news/data/models/news_response.dart';
 
+@Named("NewsDataSourcesImpl")
 @Singleton(as: NewsDataSources)
 class NewsDataSourcesImpl implements NewsDataSources {
   @override

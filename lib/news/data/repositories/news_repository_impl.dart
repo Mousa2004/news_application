@@ -9,7 +9,10 @@ import 'package:news_application/news/data/repositories/news_repository.dart';
 class NewsRepositoryImpl implements NewsRepository {
   NewsDataSources newsDataSources;
   NewsLocalDataSources newsLocalDataSources;
-  NewsRepositoryImpl(this.newsDataSources, this.newsLocalDataSources);
+  NewsRepositoryImpl(
+    @Named("NewsDioDataSourcesImp") this.newsDataSources,
+    @Named("NewsDioLocalDataSourcesImpl") this.newsLocalDataSources,
+  );
   @override
   Future<List<News>> getNews(String newsId, int page, int pageSize) async {
     //Internet
