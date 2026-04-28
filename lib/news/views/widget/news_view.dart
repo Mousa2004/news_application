@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_application/news/view_model/news_state.dart';
 import 'package:news_application/news/view_model/news_view_model_news.dart';
 import 'package:news_application/shared/view/widget/apptheme.dart';
-import 'package:news_application/shared/view/widget/customed_error_messages.dart';
+import 'package:news_application/shared/view/widget/app_dialog.dart';
 import 'package:news_application/shared/view/widget/injectable.dart';
 import 'package:news_application/sources/data/models/source.dart';
 import 'package:news_application/news/views/widget/news_item.dart';
@@ -69,7 +69,7 @@ class _NewsViewState extends State<NewsView> {
           if (viewSources is GetSourceLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (viewSources is GetSourceError) {
-            return CustomedErrorMessages(message: viewSources.message);
+            AppDialog.showDialogMessage(message: viewSources.message);
           } else if (viewSources is GetSourceSuccess) {
             List<Source> sources = viewSources.sources;
             if (sources.isEmpty) {
@@ -118,7 +118,7 @@ class _NewsViewState extends State<NewsView> {
                           newsViewModelNews.newsList.isEmpty) {
                         return const Center(child: CircularProgressIndicator());
                       } else if (viewNews is GetNewsError) {
-                        return CustomedErrorMessages(message: viewNews.message);
+                        AppDialog.showDialogMessage(message: viewNews.message);
                       } else if (viewNews is GetNewsSuccess ||
                           viewNews is GetNewsLoading ||
                           viewNews is GetNewsPaginationLoading) {
@@ -233,9 +233,8 @@ class _NewsViewState extends State<NewsView> {
                 ),
               ],
             );
-          } else {
-            return SizedBox();
           }
+          return SizedBox();
         },
       ),
     );

@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_application/news/view_model/news_state.dart';
-
 import 'package:news_application/news/view_model/news_view_model_news.dart';
-
 import 'package:news_application/shared/view/widget/apptheme.dart';
-
 import 'package:news_application/news/views/widget/news_item.dart';
 import 'package:news_application/news/views/widget/show_details_button.dart';
-import 'package:news_application/shared/view/widget/customed_error_messages.dart';
+import 'package:news_application/shared/view/widget/app_dialog.dart';
 import 'package:news_application/shared/view/widget/injectable.dart';
 import 'package:news_application/shared/view_model/setting_theme.dart';
 import 'package:provider/provider.dart';
@@ -71,7 +68,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     if (state is GetNewsLoading) {
                       return Center(child: CircularProgressIndicator());
                     } else if (state is GetNewsError) {
-                      return CustomedErrorMessages(message: state.message);
+                      AppDialog.showDialogMessage(message: state.message);
                     } else if (state is GetSearchNewsSuccess) {
                       final articles = state.searchNewsList;
                       if (articles.isEmpty) {
@@ -115,9 +112,8 @@ class _SearchScreenState extends State<SearchScreen> {
                           );
                         },
                       );
-                    } else {
-                      return SizedBox();
                     }
+                    return SizedBox();
                   },
                 ),
               ),
